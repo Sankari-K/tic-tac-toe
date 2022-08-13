@@ -12,19 +12,21 @@ const Player = (name, marker) => {
 const gameBoard = (() => {
     let board = 
             [
-            'X', 'X', 'O',
-            'O', 'X', 'O',
-            'O', 'O', 'X',
+            '', '', '',
+            '', '', '',
+            '', '', '',
             ]
 
     const placeMarker = (position, marker) => {
         if (board[position] === '') {
             board[position] = marker;
+            console.log(board);
         }
+        displayController.displayBoard(gameBoard.board);
     }
 
     const isBoardFull = () => {
-        for (let i = 0; i < board.length - 1; i++)
+        for (let i = 0; i < board.length; i++)
         {
             if (board[i] === '') {
                 return false;
@@ -80,12 +82,30 @@ const gameFlow = (() => {
     let player1 = Player('Alex', 'X');
     let player2 = Player('John', 'O');
     let currentPlayer = player2;
-    displayController.displayBoard(gameBoard.board);
-    // while (!gameBoard.isBoardFull() && !gameBoard.isWon(currentPlayer.marker)) {
-    //     // !gameBoard.isWon() && 
-    //     currentPlayer = currentPlayer == player1 ? player2 : player1;
-    //     // currentPlayer.placeMarker(3);
-        
+    boardElement.forEach((field) => {
+        field.addEventListener('click', selectUserField)  
+    })
+
+    function selectUserField(event) {
+        if (event.composedPath()[0].innerText == '') {
+            currentPlayer.placeMarker(event.composedPath()[0].id - 1);
+            if (gameBoard.isBoardFull() || gameBoard.isWon(currentPlayer.marker)) {
+                console.log(gameBoard.isBoardFull());
+                console.log(gameBoard.isWon(currentPlayer.marker));
+                console.log("game over!");
+                boardElement.forEach((field) => {
+                    field.removeEventListener('click', selectUserField)  
+                })
+            }
+            currentPlayer = currentPlayer == player1 ? player2 : player1;
+        }
+    }
+    // const control = () => {
+    //     displayController.displayBoard(gameBoard.board);
+    // }
+    // return {
+    //     control
     // }
 })();
-// gameBoard.placeMarker(5, 'X');
+
+// gameFlow.control();
