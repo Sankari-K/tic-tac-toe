@@ -1,18 +1,20 @@
+const boardElement = document.querySelectorAll('.field');
+
 // factories for multiples of something  
 const Player = (name, marker) => {
     const placeMarker = position => {
         gameBoard.placeMarker(position, marker);
     };
-   return { name, marker };
+   return { name, marker, placeMarker };
 };
 
 // module for one of something
 const gameBoard = (() => {
     let board = 
             [
-            '', '', '',
-            '', '', '',
-            '', '', '',
+            'X', 'X', 'O',
+            'O', 'X', 'O',
+            'O', 'O', 'X',
             ]
 
     const placeMarker = (position, marker) => {
@@ -63,7 +65,11 @@ const gameBoard = (() => {
 
 const displayController = (() => {
     const displayBoard = (gameBoard) => {
-        console.log("Update board");
+        let index = 0;
+        boardElement.forEach((field) => {
+            field.innerText = gameBoard[index];
+            index++;
+        })
     }
     return {
         displayBoard
@@ -74,11 +80,12 @@ const gameFlow = (() => {
     let player1 = Player('Alex', 'X');
     let player2 = Player('John', 'O');
     let currentPlayer = player2;
-    while (!gameBoard.isBoardFull() && !gameBoard.isWon(currentPlayer.marker)) {
-        // !gameBoard.isWon() && 
-        currentPlayer = currentPlayer == player1 ? player2 : player1;
-        currentPlayer.placeMarker(3);
+    displayController.displayBoard(gameBoard.board);
+    // while (!gameBoard.isBoardFull() && !gameBoard.isWon(currentPlayer.marker)) {
+    //     // !gameBoard.isWon() && 
+    //     currentPlayer = currentPlayer == player1 ? player2 : player1;
+    //     // currentPlayer.placeMarker(3);
         
-    }
+    // }
 })();
 // gameBoard.placeMarker(5, 'X');
