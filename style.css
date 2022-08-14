@@ -51,6 +51,10 @@ input:focus {
     height: 150px;
 }
 
+.form > div > p {
+    margin: 30px 0;
+}
+
 .form {
     display: flex;
     justify-content: space-evenly;
@@ -62,6 +66,7 @@ button.prev, button.next {
     align-items: center;
     justify-content: center;
     border: 3px solid #e3c2c6;
+    padding: 0px;
 }
 
 button.prev:hover, button.next:hover {
@@ -74,8 +79,8 @@ button.prev > img:hover, button.next > img:hover {
 
 button.prev > img, button.next > img {
     padding: 5px;
-    height: 15px;
-    width: 15px; 
+    height: 20px;
+    width: 20px; 
     filter: invert(41%) sepia(12%) saturate(872%) hue-rotate(164deg) brightness(93%) contrast(87%);
 }
 
@@ -89,11 +94,13 @@ button.prev > img, button.next > img {
 #play:hover {
     border: 3px solid #546a7b;
 }
+
 .player-icon {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
+    margin-bottom: 10px;
 }
 
 .sub-container {
@@ -121,4 +128,9 @@ button.prev > img, button.next > img {
     background-color: #b9929f;
 }
 
+#game-area {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
 /* https://coolors.co/e2c2c6-546a7b-b9929f-adc698-d0e3c4 */
