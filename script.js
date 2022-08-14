@@ -79,6 +79,9 @@ const displayController = (() => {
 })();
 
 const gameFlow = (() => {
+    const prev = document.querySelectorAll(".prev");
+    const next = document.querySelectorAll(".next");
+
     let player1 = Player('Alex', 'X');
     let player2 = Player('John', 'O');
     let currentPlayer = player2;
@@ -100,6 +103,24 @@ const gameFlow = (() => {
             currentPlayer = currentPlayer == player1 ? player2 : player1;
         }
     }
+
+    prev.forEach((button) => {
+        button.addEventListener('click', (e) => {
+            let avatarImage = document.getElementById(e.composedPath()[1].classList[1]);
+            let currentImage = +avatarImage.src.split('/').pop()[0];
+            currentImage = currentImage === 1 ? 10: currentImage;
+            avatarImage.src = `./assets/icons/${currentImage - 1}.svg`;
+        })
+    })
+
+    next.forEach((button) => {
+        button.addEventListener('click', (e) => {
+            let avatarImage = document.getElementById(e.composedPath()[1].classList[1]);
+            let currentImage = +avatarImage.src.split('/').pop()[0];
+            currentImage = currentImage === 9 ? 0: currentImage;
+            avatarImage.src = `./assets/icons/${currentImage + 1}.svg`;
+        })
+    })
     // const control = () => {
     //     displayController.displayBoard(gameBoard.board);
     // }
