@@ -9,35 +9,38 @@
 </head>
 <body>
     <h1>TIC TAC TOE</h1>
-    <p>Player Selection</p>
-    <form name="form" action="./game.html">
-        <div>
-            <p>Player 1</p>
-            <p>Mark: X</p>
-            <div class="player-icon">
-                <button class="prev" type="button"><img src="./assets/left.svg" alt="left"></button>
-                <img src="./assets/input_label.webp" alt="avatar">
-                <button class="next" type="button"><img src="./assets/right.svg" alt="right"></button>
+    <div id="player-selection">
+        <p>Player Selection</p>
+        <form name="form" action="./game.html">
+            <div class="form">
+                <div>
+                    <p>Player 1</p>
+                    <p>Mark: X</p>
+                    <div class="player-icon">
+                        <button class="prev" type="button"><img src="./assets/left.svg" alt="left"></button>
+                        <img src="./assets/input_label.webp" alt="avatar">
+                        <button class="next" type="button"><img src="./assets/right.svg" alt="right"></button>
+                    </div>
+                    <div>
+                        <input type="text" id="name-1" default="Player 1" placeholder="Player 1">
+                    </div>
+                </div>
+                <div>
+                    <p>Player 2</p>
+                    <p>Mark: O</p>
+                    <div class="player-icon">
+                        <button class="prev" type="button"><img src="./assets/left.svg" alt="left"></button>
+                        <img src="./assets/input_label.webp" alt="avatar">
+                        <button class="next" type="button"><img src="./assets/right.svg" alt="right"></button>
+                    </div>
+                    <div>
+                        <input type="text" id="name-2" default="Player 2" placeholder="Player 2">
+                    </div>
+                </div>
             </div>
-            <div>
-                <input type="text" id="name" default="Player 1" placeholder="Player 1">
-                <label for="name"><img src="./assets/input_label.webp" alt="label"></label>
-            </div>
-        </div>
-        <div>
-            <p>Player 2</p>
-            <p>Mark: O</p>
-            <div class="player-icon">
-                <button class="prev" type="button"><img src="./assets/left.svg" alt="left"></button>
-                <img src="./assets/input_label.webp" alt="avatar">
-                <button class="next" type="button"><img src="./assets/right.svg" alt="right"></button>
-            </div>
-            <div>
-                <input type="text" id="name" default="Player 2" placeholder="Player 2">
-                <label for="name"><img src="./assets/input_label.webp" alt="label"></label>
-            </div>
-        </div>
-    </form>
+            <button id="play">Play!</button>
+        </form>
+    </div>
     <script src="./script.js"></script>
 </body>
 </html>
