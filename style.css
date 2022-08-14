@@ -1,13 +1,95 @@
-.sub-container {
-    display: flex;
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
+
+* {
+    font-family: 'Amatic SC', cursive;
+    text-align: center;
+    font-size: 40px;
+    color: #546a7b;/*#777; */
+} 
+
+body {
+    background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("./assets/bg.png");
+    /* background-color: #b9929f33; */
 }
 
-.sub-container > div {
-    width: 100px;
-    height:100px;
-    background-color: red;
-    margin: 1px;
+h1 {
+    font-size: 65px;
+    /* font-weight: lighter; */
+}
+
+input {
+    width: 270px;
+    height: 25px;
+    border-radius: 7px;
+    border-color: #E5E7EB;
+    border-style:ridge;
+}
+
+input:focus {
+    outline: none !important;
+    border:2px solid #546a7b;
+}
+
+label > img {
+    height: 30px;
+    border-color: #546a7b;
+}
+
+form > div > div > img {
+    border-radius: 50%;
+    height: 150px;
+}
+
+form {
+    display: flex;
+    justify-content: space-evenly;
+    /* flex-direction: column; */
+}
+
+button.prev, button.next {
+    border-radius: 5px;
+    border-width: 1px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
+button.prev > img, button.next > img {
+    padding: 5px;
+    height: 15px;
+    width: 15px; 
+}
+
+.player-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.sub-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hide {
+    display: none;
+}
+
+.sub-container > div {
+    width: 150px;
+    height: 150px;
+    background-color: #e3c2c6;
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.sub-container > div:hover {
+    background-color: #b9929f;
+}
+
+/* https://coolors.co/e2c2c6-546a7b-b9929f-adc698-d0e3c4 */

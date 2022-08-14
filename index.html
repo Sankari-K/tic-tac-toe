@@ -8,21 +8,36 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div class="sub-container">
-        <div id="1" class="field"></div>
-        <div id="2" class="field"></div>
-        <div id="3" class="field"></div>
-    </div>
-    <div class="sub-container">
-        <div id="4" class="field"></div>
-        <div id="5" class="field"></div>
-        <div id="6" class="field"></div>
-    </div>
-    <div class="sub-container">
-        <div id="7" class="field"></div>
-        <div id="8" class="field"></div>
-        <div id="9" class="field"></div>
-    </div>
+    <h1>TIC TAC TOE</h1>
+    <p>Player Selection</p>
+    <form name="form" action="./game.html">
+        <div>
+            <p>Player 1</p>
+            <p>Mark: X</p>
+            <div class="player-icon">
+                <button class="prev" type="button"><img src="./assets/left.svg" alt="left"></button>
+                <img src="./assets/input_label.webp" alt="avatar">
+                <button class="next" type="button"><img src="./assets/right.svg" alt="right"></button>
+            </div>
+            <div>
+                <input type="text" id="name" default="Player 1" placeholder="Player 1">
+                <label for="name"><img src="./assets/input_label.webp" alt="label"></label>
+            </div>
+        </div>
+        <div>
+            <p>Player 2</p>
+            <p>Mark: O</p>
+            <div class="player-icon">
+                <button class="prev" type="button"><img src="./assets/left.svg" alt="left"></button>
+                <img src="./assets/input_label.webp" alt="avatar">
+                <button class="next" type="button"><img src="./assets/right.svg" alt="right"></button>
+            </div>
+            <div>
+                <input type="text" id="name" default="Player 2" placeholder="Player 2">
+                <label for="name"><img src="./assets/input_label.webp" alt="label"></label>
+            </div>
+        </div>
+    </form>
     <script src="./script.js"></script>
 </body>
 </html>
