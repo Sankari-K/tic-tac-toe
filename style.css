@@ -13,6 +13,10 @@ body {
     /* background-color: #b9929f33; */
 }
 
+.hide {
+    display: none;
+}
+
 #player-selection {
     border-radius: 5px;
     background-color: #e3c2c6;
@@ -109,10 +113,6 @@ button.prev > img, button.next > img {
     justify-content: center;
 }
 
-.hide {
-    display: none;
-}
-
 .sub-container > div {
     width: 150px;
     height: 150px;
@@ -147,5 +147,31 @@ button.prev > img, button.next > img {
 .highlight > img {
     border: solid 3px #b9929f !important;
     border-radius: 50%;
+}
+
+.result {
+    font-size: 60px;
+}
+
+.controls {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.controls > div {
+    margin: 0px 10px;
+    border-radius: 15px;
+    background-color: #e3c2c6;
+    height: 45px;
+    width: 45px;
+}
+
+.controls > div >  img {
+    height: 25px;
+    width: 25px;
+    padding: 10px;
+    filter: invert(41%) sepia(12%) saturate(847%) hue-rotate(164deg) brightness(93%) contrast(90%);
+    border-radius: 5px;
 }
 /* https://coolors.co/e2c2c6-546a7b-b9929f-adc698-d0e3c4 */

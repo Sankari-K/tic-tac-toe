@@ -95,12 +95,16 @@ const gameFlow = (() => {
     let flag = true;
 
     function selectUserField(event) {
-        if (event.composedPath()[0].innerText == '') {
+        if (event.composedPath()[0].innerText == '') { 
             currentPlayer.placeMarker(event.composedPath()[0].id - 1);
             if (gameBoard.isBoardFull() || gameBoard.isWon(currentPlayer.marker)) {
-                console.log(gameBoard.isBoardFull());
-                console.log(gameBoard.isWon(currentPlayer.marker));
-                console.log("game over!");
+                if (gameBoard.isWon(currentPlayer.marker)) {
+                    setDescription(`${currentPlayer.name} wins!`);
+                }
+                else {
+                    setDescription("It's a tie!");
+                }
+                
                 flag = false;
                 
                 document.querySelector("#player2").classList.remove("highlight");
@@ -117,12 +121,18 @@ const gameFlow = (() => {
             highlight.classList.add("highlight");
 
             currentPlayer = currentPlayer == player1 ? player2 : player1;
-            
+            setDescription(`${currentPlayer.marker}'s turn!`);
+
             highlightCurrentPlayer = currentPlayer == player1 ? `#player2` : `#player1`;
             highlight = document.querySelector(highlightCurrentPlayer);
             highlight.classList.remove("highlight");
             }   
         }
+    }
+
+    function setDescription(text) {
+        let resultField = document.querySelector(".result");
+        resultField.innerText = text;
     }
 
     prev.forEach((button) => {
