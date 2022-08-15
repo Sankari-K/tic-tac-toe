@@ -133,4 +133,19 @@ button.prev > img, button.next > img {
     align-items: center;
     justify-content: space-evenly;
 }
+
+.highlight {
+    background-color: #b9929f44;
+}
+
+#player1 > img, #player2 > img {
+    margin: 15px;
+    border: solid 3px #546a7b;
+    border-radius: 50%;
+}
+
+.highlight > img {
+    border: solid 3px #b9929f !important;
+    border-radius: 50%;
+}
 /* https://coolors.co/e2c2c6-546a7b-b9929f-adc698-d0e3c4 */

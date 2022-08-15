@@ -20,7 +20,7 @@ const gameBoard = (() => {
     const placeMarker = (position, marker) => {
         if (board[position] === '') {
             board[position] = marker;
-            console.log(board);
+            // console.log(board);
         }
         displayController.displayBoard(gameBoard.board);
     }
@@ -83,14 +83,16 @@ const gameFlow = (() => {
     const next = document.querySelectorAll(".next");
     const play = document.getElementById("play");
 
+    let highlight;
     let player1 = Player('Alex', 'X', 1);
     let player2 = Player('John', 'O', 1);
 
-    // player1.name = "Benjamin";
-    let currentPlayer = player2;
+    let currentPlayer = player1;
     boardElement.forEach((field) => {
         field.addEventListener('click', selectUserField)  
     })
+
+    let flag = true;
 
     function selectUserField(event) {
         if (event.composedPath()[0].innerText == '') {
@@ -99,32 +101,42 @@ const gameFlow = (() => {
                 console.log(gameBoard.isBoardFull());
                 console.log(gameBoard.isWon(currentPlayer.marker));
                 console.log("game over!");
+                flag = false;
+                
+                document.querySelector("#player2").classList.remove("highlight");
+                document.querySelector("#player1").classList.remove("highlight");
+
                 boardElement.forEach((field) => {
                     field.removeEventListener('click', selectUserField)  
                 })
             }
+
+            if (flag) {
+                let highlightCurrentPlayer = currentPlayer == player1 ? `#player2` : `#player1`;
+            highlight = document.querySelector(highlightCurrentPlayer);
+            highlight.classList.add("highlight");
+
             currentPlayer = currentPlayer == player1 ? player2 : player1;
+            
+            highlightCurrentPlayer = currentPlayer == player1 ? `#player2` : `#player1`;
+            highlight = document.querySelector(highlightCurrentPlayer);
+            highlight.classList.remove("highlight");
+            }   
         }
     }
 
     prev.forEach((button) => {
         button.addEventListener('click', (e) => {
             let avatarImage = document.getElementById(e.composedPath()[1].classList[1]);
-            
-            console.log(e);
-            console.log(document.getElementById(e.composedPath()[1].classList[1]));
-
             let currentImage = +avatarImage.src.split('/').pop()[0]; 
             currentImage = currentImage == 1 ? 10: currentImage;
             avatarImage.src = `./assets/icons/${currentImage - 1}.svg`;
             if (e.composedPath()[1].classList[1] == '1') {
                 player1.icon = currentImage - 1;
-                // window.localStorage.setItem("icon1", currentImage - 1);
             }
             else {
                 console.log(currentImage - 1);
                 player2.icon = currentImage - 1;
-                // window.localStorage.setItem("icon2", currentImage - 1);
             }
         })
     })
@@ -133,22 +145,16 @@ const gameFlow = (() => {
         button.addEventListener('click', (e) => {
             // to know which player
             let avatarImage = document.getElementById(e.composedPath()[1].classList[1]);
-
-            console.log(e);
-            console.log(document.getElementById(e.composedPath()[1].classList[1]));
-
             let currentImage = +avatarImage.src.split('/').pop()[0];
             currentImage = currentImage == 9 ? 0: currentImage;
             avatarImage.src = `./assets/icons/${currentImage + 1}.svg`;
 
             if (e.composedPath()[1].classList[1] == '1') {
                 player1.icon = currentImage + 1;
-                // window.localStorage.setItem("icon1", currentImage + 1);
             }
             else {
                 console.log(currentImage + 1);
                 player2.icon = currentImage + 1;
-                // window.localStorage.setItem("icon2", currentImage + 1);
             }
         })
     })
@@ -176,17 +182,16 @@ const gameFlow = (() => {
         player1.icon = window.localStorage.getItem("icon1");
         player2.icon = window.localStorage.getItem("icon2");
 
-        let player1Region = document.querySelector(".player1");
-        let player2Region = document.querySelector(".player2");
+        let player1Region = document.querySelector("#player1");
+        let player2Region = document.querySelector("#player2");
 
-        console.log(player1.icon, player2.icon);
         player1Region.innerHTML = `<p>Mark: ${player1.marker}</p>
         <img src="./assets/icons/${player1.icon}.svg">
-        <p>${player1.name}</p>`;
+        <p class="name-label">${player1.name}</p>`;
 
-        player2Region.innerHTML = `<p>${player2.name}</p>
+        player2Region.innerHTML = `<p>Mark: ${player2.marker}</p>
         <img src="./assets/icons/${player2.icon}.svg">
-        <p>Mark: ${player2.marker}</p>`;
+        <p class="name-label">${player2.name}</p>`;
     }
     // const control = () => {
     //     displayController.displayBoard(gameBoard.board);
