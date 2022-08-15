@@ -171,6 +171,10 @@ button.prev > img, button.next > img {
     background-color: #b9929f;
 }
 
+.white {
+    color: #ffffff;
+}
+
 .controls > div >  img {
     height: 25px;
     width: 25px;

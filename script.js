@@ -56,11 +56,33 @@ const gameBoard = (() => {
         return false;
     }
 
+    const showWon = (marker) => {
+        for (let i = 0; i < 3; i++) {
+            if (board[i] == marker && board[i + 3] == marker && 
+                board[i + 6] == marker) {
+                    displayController.displayWon([i, i + 3, i + 6]);
+                }
+        }
+        for (let i = 0; i < 7; i = i + 3) {
+            if (board[i] == marker && board[i + 1] == marker && 
+                board[i + 2] == marker) {
+                    displayController.displayWon([i, i + 1, i + 2]);
+                }
+        }
+        if (board[0] == marker && board[4] == marker && board[8] == marker) {
+            displayController.displayWon([0, 4, 8]);
+        }
+        if (board[2] == marker && board[4] == marker && board[6] == marker) {
+            displayController.displayWon([2, 4, 6]);
+        }
+    }
+
     return {
         board,
         placeMarker,
         isBoardFull,
-        isWon
+        isWon,
+        showWon
     };
 })();
 
@@ -72,8 +94,20 @@ const displayController = (() => {
             index++;
         })
     }
+
+    const displayWon = (indices) => {
+        let index = 0;
+        boardElement.forEach((field) => {
+            if (indices.includes(index)) {
+                field.classList.add("white");
+            }
+            index++;
+        })
+    }
+
     return {
-        displayBoard
+        displayBoard,
+        displayWon
     }
 })();
 
@@ -98,6 +132,7 @@ const gameFlow = (() => {
             currentPlayer.placeMarker(event.composedPath()[0].id - 1);
             if (gameBoard.isBoardFull() || gameBoard.isWon(currentPlayer.marker)) {
                 if (gameBoard.isWon(currentPlayer.marker)) {
+                    gameBoard.showWon(currentPlayer.marker);
                     setDescription(`${currentPlayer.name} wins!`);
                 }
                 else {
