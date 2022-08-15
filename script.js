@@ -214,17 +214,17 @@ const gameFlow = (() => {
             window.localStorage.setItem("icon1", player1.icon);
             window.localStorage.setItem("icon2", player2.icon);
 
-            window.location.href = "/game.html";
+            window.location.href = "./game.html";
         })
     }
  
     if (play === null) {
         document.querySelector(".refresh").addEventListener('click', (e) => {
-            window.location.href = "/game.html";
+            window.location.href = "./game.html";
         })
     
         document.querySelector(".home").addEventListener('click', (e) => {
-            window.location.href = "/index.html";
+            window.location.href = "./index.html";
         })
 
         player1.name = window.localStorage.getItem("name1");
