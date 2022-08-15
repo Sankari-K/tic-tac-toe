@@ -167,6 +167,10 @@ button.prev > img, button.next > img {
     width: 45px;
 }
 
+.controls > div:hover {
+    background-color: #b9929f;
+}
+
 .controls > div >  img {
     height: 25px;
     width: 25px;

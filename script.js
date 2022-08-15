@@ -20,7 +20,6 @@ const gameBoard = (() => {
     const placeMarker = (position, marker) => {
         if (board[position] === '') {
             board[position] = marker;
-            // console.log(board);
         }
         displayController.displayBoard(gameBoard.board);
     }
@@ -130,6 +129,7 @@ const gameFlow = (() => {
         }
     }
 
+
     function setDescription(text) {
         let resultField = document.querySelector(".result");
         resultField.innerText = text;
@@ -145,7 +145,6 @@ const gameFlow = (() => {
                 player1.icon = currentImage - 1;
             }
             else {
-                console.log(currentImage - 1);
                 player2.icon = currentImage - 1;
             }
         })
@@ -163,7 +162,6 @@ const gameFlow = (() => {
                 player1.icon = currentImage + 1;
             }
             else {
-                console.log(currentImage + 1);
                 player2.icon = currentImage + 1;
             }
         })
@@ -186,6 +184,14 @@ const gameFlow = (() => {
     }
  
     if (play === null) {
+        document.querySelector(".refresh").addEventListener('click', (e) => {
+            window.location.href = "/game.html";
+        })
+    
+        document.querySelector(".home").addEventListener('click', (e) => {
+            window.location.href = "/index.html";
+        })
+
         player1.name = window.localStorage.getItem("name1");
         player2.name = window.localStorage.getItem("name2");
 
@@ -203,12 +209,5 @@ const gameFlow = (() => {
         <img src="./assets/icons/${player2.icon}.svg">
         <p class="name-label">${player2.name}</p>`;
     }
-    // const control = () => {
-    //     displayController.displayBoard(gameBoard.board);
-    // }
-    // return {
-    //     control
-    // }
 })();
 
-// gameFlow.control();
